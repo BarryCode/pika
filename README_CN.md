@@ -1,4 +1,5 @@
 # Pika
+
 ## 简介 [English](https://github.com/Qihoo360/pika/blob/master/README.md)
 Pika是一个可持久化的大容量redis存储服务，兼容string、hash、list、zset、set的绝大部分接口([兼容详情](https://github.com/Qihoo360/pika/wiki/pika-支持的redis接口及兼容情况))，解决redis由于存储数据量巨大而导致内存不够用的容量瓶颈，并且可以像redis一样，通过slaveof命令进行主从备份，支持全同步和部分同步，pika还可以用在twemproxy或者codis中来实现静态数据分片（pika已经可以支持codis的动态迁移slot功能，目前在合并到master分支，欢迎使用，感谢作者[left2right](https://github.com/left2right)同学提交pr）
 
@@ -21,13 +22,19 @@ Pika是一个可持久化的大容量redis存储服务，兼容string、hash、l
 <td height = "100" width = "150"><img src="http://imgur.com/yJe4FP8.png" alt="HX"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/o8ZDXCH.png" alt="XL"></td>
 <td height = "100" width = "150"><img src="http://imgur.com/w3qNQ9T.png" alt="GWD"></td>
-<td height = "100" width = "150"><img src="http://i.imgur.com/Ll6SifR.png" alt="DYD"></td>
+<td height = "100" width = "150"><img src="https://imgur.com/KMVr3Z6.png" alt="DYD"></td>
 </tr>
 <tr>
 <td height = "100" width = "150"><img src="http://i.imgur.com/vJbAfri.png" alt="YM"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/aNxzwsY.png" alt="XM"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/mrWxwkF.png" alt="XL"></td>
 <td height = "100" width = "150"><img src="http://imgur.com/0oaVKlk.png" alt="YM"></td>
+</tr>
+<tr>
+<td height = "100" width = "150"><img src="https://imgur.com/qN6z25x.png" alt="MM"></td>
+<td height = "100" width = "150"><img src="https://i.imgur.com/G9MOvZe.jpg" alt="VIP"></td>
+<td height = "100" width = "150"><img src="https://imgur.com/vQW5qr3.png" alt="LK"></td>
+<td height = "100" width = "150"><img src="https://i.imgur.com/jIMG4mi.jpg" alt="KS"></td>
 </tr>
 </table>
 
@@ -41,7 +48,13 @@ Pika是一个可持久化的大容量redis存储服务，兼容string、hash、l
 * 完善的[运维](https://github.com/Qihoo360/pika/wiki/pika的一些管理命令方式说明)命令
 
 
-## 编译安装
+## 使用
+
+### 二进制包使用
+
+用户可以直接从[releases](https://github.com/Qihoo360/pika/releases)下载最新的二进制版本包直接使用.
+
+### 编译使用
 
 1.在编译机上安装snappy，glog，CentOS系统可以用yum安装，Ubuntu可以用apt-get安装。如是CentOS系统，执行如下命令：
 

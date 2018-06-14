@@ -5,10 +5,10 @@
 
 #include <glog/logging.h>
 #include "pink/include/pink_conn.h"
-#include "pika_binlog_receiver_thread.h"
-#include "pika_master_conn.h"
-#include "pika_server.h"
-#include "pika_command.h"
+#include "include/pika_binlog_receiver_thread.h"
+#include "include/pika_master_conn.h"
+#include "include/pika_server.h"
+#include "include/pika_command.h"
 
 extern PikaServer* g_pika_server;
 
@@ -17,6 +17,8 @@ PikaBinlogReceiverThread::PikaBinlogReceiverThread(const std::set<std::string> &
       : conn_factory_(this),
         handles_(this),
         serial_(0) {
+  cmds_.reserve(300);
+  InitCmdTable(&cmds_);
   thread_rep_ = pink::NewHolyThread(ips, port, &conn_factory_,
                                     cron_interval, &handles_);
   thread_rep_->set_thread_name("BinlogReceiver");
@@ -36,11 +38,12 @@ bool PikaBinlogReceiverThread::Handles::AccessHandle(std::string& ip) const {
   if (ip == "127.0.0.1") {
     ip = g_pika_server->host();
   }
-//  if (binlog_receiver_->thread_rep_->conn_num() != 0 ||
-  if (!g_pika_server->ShouldAccessConnAsMaster(ip)) {
-    LOG(WARNING) << "BinlogReceiverThread AccessHandle failed: " << ip;
-    return false;
-  }
+  LOG(INFO) << "Master Binlog Sender: " << ip << " connecting";
+  // if (binlog_receiver_->thread_rep_->conn_num() != 0 ||
+  // if (!g_pika_server->ShouldAccessConnAsMaster(ip)) {
+  //  LOG(WARNING) << "BinlogReceiverThread AccessHandle failed: " << ip;
+  //  return false;
+  // }
   g_pika_server->PlusMasterConnection();
   return true;
 }

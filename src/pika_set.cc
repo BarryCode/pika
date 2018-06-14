@@ -5,9 +5,9 @@
 
 #include "slash/include/slash_string.h"
 #include "nemo.h"
-#include "pika_set.h"
-#include "pika_server.h"
-#include "pika_slot.h"
+#include "include/pika_set.h"
+#include "include/pika_server.h"
+#include "include/pika_slot.h"
 
 extern PikaServer *g_pika_server;
 
@@ -408,10 +408,12 @@ void SRandmemberCmd::DoInitial(PikaCmdArgsType &argv, const CmdInfo* const ptr_i
   if (argv.size() > 3) {
     res_.SetRes(CmdRes::kWrongNum, kCmdNameSRandmember);
     return;
-  } else if (argv.size() < 3) {
-    return;
-  } else if (!slash::string2l(argv[2].data(), argv[2].size(), &count_)) {
-    res_.SetRes(CmdRes::kInvalidInt);
+  } else if (argv.size() == 3) {
+    if (!slash::string2l(argv[2].data(), argv[2].size(), &count_)) {
+      res_.SetRes(CmdRes::kInvalidInt);
+    } else {
+      reply_arr = true;;
+    }
   }
   return;
 }
@@ -420,11 +422,16 @@ void SRandmemberCmd::Do() {
   std::vector<std::string> members;
   nemo::Status s = g_pika_server->db()->SRandMember(key_, members, count_);
   if (s.ok() || s.IsNotFound()) {
-    res_.AppendArrayLen(members.size());
-    std::vector<std::string>::const_iterator iter = members.begin();
-    for (; iter != members.end(); iter++) {
-      res_.AppendStringLen(iter->size());
-      res_.AppendContent(*iter);
+    if (!reply_arr && members.size()) {
+      res_.AppendStringLen(members[0].size());
+      res_.AppendContent(members[0]);
+    } else {
+      res_.AppendArrayLen(members.size());
+      std::vector<std::string>::const_iterator iter = members.begin();
+      for (; iter != members.end(); iter++) {
+        res_.AppendStringLen(iter->size());
+        res_.AppendContent(*iter);
+      }
     }
   } else {
     res_.SetRes(CmdRes::kErrOther, s.ToString());

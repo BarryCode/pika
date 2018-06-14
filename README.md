@@ -26,13 +26,19 @@ Pika is a persistent huge storage service , compatible  with the vast majority o
 <td height = "100" width = "150"><img src="http://imgur.com/yJe4FP8.png" alt="HX"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/o8ZDXCH.png" alt="XL"></td>
 <td height = "100" width = "150"><img src="http://imgur.com/w3qNQ9T.png" alt="GWD"></td>
-<td height = "100" width = "150"><img src="http://i.imgur.com/Ll6SifR.png" alt="DYD"></td>
+<td height = "100" width = "150"><img src="https://imgur.com/KMVr3Z6.png" alt="DYD"></td>
 </tr>
 <tr>
 <td height = "100" width = "150"><img src="http://i.imgur.com/vJbAfri.png" alt="YM"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/aNxzwsY.png" alt="XM"></td>
 <td height = "100" width = "150"><img src="http://i.imgur.com/mrWxwkF.png" alt="XL"></td>
 <td height = "100" width = "150"><img src="http://imgur.com/0oaVKlk.png" alt="YM"></td>
+</tr>
+<tr>
+<td height = "100" width = "150"><img src="https://imgur.com/qN6z25x.png" alt="MM"></td>
+<td height = "100" width = "150"><img src="https://i.imgur.com/G9MOvZe.jpg" alt="VIP"></td>
+<td height = "100" width = "150"><img src="https://imgur.com/vQW5qr3.png" alt="LK"></td>
+<td height = "100" width = "150"><img src="https://i.imgur.com/jIMG4mi.jpg" alt="KS"></td>
 </tr>
 </table>
 
@@ -47,9 +53,8 @@ Pika is a persistent huge storage service , compatible  with the vast majority o
 
 ## For developer
 
-### RoadMap
-
-* optimize engine nemo to improve list performance
+### Releases
+The User can download the binary release from [releases](https://github.com/Qihoo360/pika/releases) or compile the source release.
 
 ### Dependencies
 
@@ -316,6 +321,7 @@ Compare the pika max qps with the redis.
 Mail: g-infra-bada@360.cn
 
 QQ group: 294254078
+
 For more information about Pika, Atlas and some other technology please pay attention to our Hulk platform official account
 
 <img src="http://i.imgur.com/pL4ni57.png" height = "50%" width = "50%" alt="2">

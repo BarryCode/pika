@@ -8,7 +8,7 @@
 
 #include "slash/include/env.h"
 #include "pink/include/server_thread.h"
-#include "pika_client_conn.h"
+#include "include/pika_client_conn.h"
 
 class PikaDispatchThread {
  public:
@@ -21,6 +21,10 @@ class PikaDispatchThread {
 
   bool ClientKill(const std::string& ip_port);
   void ClientKillAll();
+
+  void SetQueueLimit(int queue_limit) {
+    thread_rep_->SetQueueLimit(queue_limit);
+  }
 
  private:
   class ClientConnFactory : public pink::ConnFactory {
